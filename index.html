@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>VueJS</title>
+	<link rel="stylesheet" href="">
+	<!-- <script src="vue.js"></script>-->
+	<!-- development version, includes helpful console warnings -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-on:input="changeGreeting"></input>
+		<p>{{ greeting }}</p>
+		<p>{{ name }}</p>
+		<p>{{ sayHello() }} <a v-bind:href="link">news</a></p>
+		<p>{{ sayHello2() }}</p>
+		<p>{{ htmlLink }}</p>
+		<p v-html="htmlLink"></p>
+	</div>
+	<script>
+	// You may of course also outsource this script code into a separate file (e.g. app.js) and simply import this file here
+		new Vue({
+			el: '#app',
+			data: {
+				greeting: 'my greeting is Hello World',
+				name: 'fred',
+				link: "http://yahoo.com.au",
+				htmlLink: "<a href='http://google.com'>Google</a>"
+			},
+			methods: {
+				changeGreeting: function(event) {
+					this.greeting = event.target.value;
+				},
+				sayHello: function(){
+					this.title = 'Hello__'
+					return this.title
+				},
+				sayHello2: function(){
+					return this.greeting
+				}
+			}
+		})
+	</script>
+</body>
+</html>
