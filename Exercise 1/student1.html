@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>VueJS</title>
+    <link rel="stylesheet" href="" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>Vue js is pretty cool - {{ name }} {{ age }}</p>
+
+      <p>{{ multi() }}</p>
+
+      <p v-once>{{ rand() }}</p>
+
+      <img v-bind:src="path" alt="" />
+
+      <div>
+        <input v-model="message" type="text" />
+
+        <p>{{ message }}</p>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+
+        data: {
+          name: "Mahmoud",
+
+          age: 21,
+
+          message: "",
+
+          path:
+            "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/750c200e-688f-4fdc-97ce-0a559aae5960/d7uyajz-c1f8a371-5616-4dfc-91ab-be504b9f9a2a.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzc1MGMyMDBlLTY4OGYtNGZkYy05N2NlLTBhNTU5YWFlNTk2MFwvZDd1eWFqei1jMWY4YTM3MS01NjE2LTRkZmMtOTFhYi1iZTUwNGI5ZjlhMmEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.l9EgmbVtT5prmwugUvyWK51qy5wkqUkDvOVhM7mzPmI"
+        },
+
+        methods: {
+          multi: function() {
+            return this.age * 3;
+          },
+
+          rand: function() {
+            let randomNum = Math.random() * 1;
+
+            return randomNum;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
