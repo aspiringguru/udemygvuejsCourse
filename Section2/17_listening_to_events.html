@@ -20,6 +20,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
       <p>Click Count : {{ counter }}</p>
       <p v-on:mousemove="updateCoordinates">
         Co-ordinates x={{ x }}, y={{ y }}
+        <span v-on:mousemove="dummy">DEAD SPOT</span>
       </p>
     </div>
     <script>
@@ -37,6 +38,9 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
           updateCoordinates: function(event) {
             this.x = event.clientX;
             this.y = event.clientY;
+          },
+          dummy: function() {
+            event.stopPropagation();
           }
         }
       });
