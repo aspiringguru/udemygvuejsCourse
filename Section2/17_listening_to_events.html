@@ -14,7 +14,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
   </head>
   <body>
     <div id="app">
-      <button v-on:click="increase(2)">
+      <button v-on:click="increase(2, event)">
         Click Me
       </button>
       <p>Click Count : {{ counter }}</p>
@@ -31,7 +31,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
           y: 0
         },
         methods: {
-          increase: function(step) {
+          increase: function(step, event) {
             this.counter += step;
           },
           updateCoordinates: function(event) {
