@@ -1,6 +1,13 @@
 <!--
 https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
 
+https://vuejs.org/v2/guide/events.html
+To address this problem, Vue provides event modifiers for v-on. 
+Recall that modifiers are directive postfixes denoted by a dot.
+.stop
+.prevent
+
+
 -->
 <!DOCTYPE html>
 <html>
@@ -21,6 +28,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
       <p v-on:mousemove="updateCoordinates">
         Co-ordinates x={{ x }}, y={{ y }}
         <span v-on:mousemove="dummy">DEAD SPOT</span>
+        <span v-on:mousemove.stop="">DEAD SPOT TWO</span>
       </p>
     </div>
     <script>
@@ -39,7 +47,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
             this.x = event.clientX;
             this.y = event.clientY;
           },
-          dummy: function() {
+          dummy: function(event) {
             event.stopPropagation();
           }
         }
