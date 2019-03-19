@@ -26,6 +26,13 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
       <p>MouseEnter Count: {{ counter2 }}</p>
       <p>MouseOver Count: {{ counter3 }}</p>
       <p>MouseOut Count: {{ counter4 }}</p>
+      <p v-on:mousemove="updateCoordinates">
+        Co-ordinates x={{ x }}, y={{ y }}
+      </p>
+      <p v-on:dblclick="mousedblclick">
+        Co-ordinates x={{ dblclickx }}, y={{ dblclicky }}, doubleClickCount:
+        {{ dblclickcount }}
+      </p>
     </div>
     <script>
       new Vue({
@@ -34,7 +41,12 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
           counter: 0,
           counter2: 0,
           counter3: 0,
-          counter4: 0
+          counter4: 0,
+          x: 0,
+          y: 0,
+          dblclickcount: 0,
+          dblclickx: 0,
+          dblclicky: 0
         },
         methods: {
           increase: function() {
@@ -48,6 +60,15 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
           },
           increasemouseout: function() {
             this.counter4++;
+          },
+          updateCoordinates: function(event) {
+            this.x = event.clientX;
+            this.y = event.clientY;
+          },
+          mousedblclick: function(event) {
+            this.dblclickx = event.clientX;
+            this.dblclicky = event.clientY;
+            this.dblclickcount++;
           }
         }
       });
