@@ -25,9 +25,9 @@ https://vuejs.org/v2/guide/events.html#Key-Modifiers
       <button v-on:click="counter2++">Click to Increase</button>
       <button v-on:click="counter2--">Click to Decrease</button>
       <button v-on:click="counter3++">Click to Increase Second.</button>
-      <p>Counter : {{ counter2 }}</p>
-      <p>Result : {{ result2() }}</p>
-      <p>Counter2 : {{ counter3 }}</p>
+      <p>Counter2 : {{ counter2 }}</p>
+      <p>Result : {{ result2() }} | {{ output }}</p>
+      <p>Counter3 : {{ counter3 }}</p>
     </div>
     <script>
       new Vue({
@@ -37,6 +37,14 @@ https://vuejs.org/v2/guide/events.html#Key-Modifiers
           result: "",
           counter2: 0,
           counter3: 0
+        },
+        computed: {
+          output: function() {
+            console.log("computed output function.");
+            return this.counter2 > 5
+              ? "Greater than 5"
+              : "Less than or equal to 5";
+          }
         },
         methods: {
           increase: function() {
