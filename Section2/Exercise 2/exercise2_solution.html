@@ -1,0 +1,63 @@
+<!--
+https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
+
+https://vuejs.org/v2/guide/events.html
+https://vuejs.org/v2/guide/events.html#Key-Modifiers
+
+NOTE:
+If event is used instead of $event, error message as below.
+
+<button v-on:click="myalert(event)">Show Alert</button>
+<button v-on:click="myalert($event)">Show Alert</button>
+
+
+[Vue warn]: Property or method "event" is not defined on the instance 
+but referenced during render. Make sure that this property is reactive, 
+either in the data option, or for class-based components, by initializing 
+the property. See: 
+https://vuejs.org/v2/guide/reactivity.html#Declaring-Reactive-Properties.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>VueJS</title>
+    <link rel="stylesheet" href="" />
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="exercise">
+      <!-- 1) Show an alert when the Button gets clicked -->
+      <div>
+        <button v-on:click="myalert">Show Alert</button>
+      </div>
+      <!-- 2) Listen to the "keydown" event and store the value in a data property 
+        (hint: event.target.value gives you the value) -->
+      <div>
+        <input type="text" v-on:keydown="value = $event.target.value" />
+        <p>{{ value }}</p>
+      </div>
+      <!-- 3) Adjust the example from 2) to only fire if the "key down" is the ENTER key -->
+      <div>
+        <input type="text" v-on:keydown.enter="value = $event.target.value" />
+        <p>{{ value }}</p>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#exercise",
+        data: {
+          counter: 0,
+          value: ""
+        },
+        methods: {
+          myalert: function(event) {
+            alert("Button alerted");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
