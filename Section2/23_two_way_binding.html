@@ -22,13 +22,18 @@ https://vuejs.org/v2/guide/events.html#Key-Modifiers
       <button v-on:click="decrease">Click to Decrease</button>
       <p>Counter : {{ counter }}</p>
       <p>Result : {{ result }}</p>
+      <button v-on:click="counter2++">Click to Increase</button>
+      <button v-on:click="counter2--">Click to Decrease</button>
+      <p>Counter : {{ counter2 }}</p>
+      <p>Result : {{ result2() }}</p>
     </div>
     <script>
       new Vue({
         el: "#app",
         data: {
           counter: 0,
-          result: ""
+          result: "",
+          counter2: 0
         },
         methods: {
           increase: function() {
@@ -40,6 +45,11 @@ https://vuejs.org/v2/guide/events.html#Key-Modifiers
             this.counter--;
             this.result =
               this.counter > 5 ? "Greater than 5" : "Less than or equal to 5";
+          },
+          result2: function() {
+            return this.counter2 > 5
+              ? "Greater than 5"
+              : "Less than or equal to 5";
           }
         }
       });
